@@ -1,90 +1,75 @@
-# Chethas Reddy
+# React + TypeScript + Vite
 
-> A portfolio that couldn't decide whether it was a resume or a video game, so it's both.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Most portfolios ask you to scroll. This one asks you to pick a mode.
+Currently, two official plugins are available:
 
-**Professional mode** is the version you'd expect. Experience, projects, education, contact.
-Clean, quick to scan, easy to forward to a hiring manager.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-**Gen Z mode** is the same facts, reorganised into a game. Four quests to unlock, an XP bar
-that fills as you dig, achievements for the curious, and a secret ending for anyone who
-actually finishes. Nothing is hidden from you in professional mode. It's the same story,
-told at a different volume.
+## React Compiler
 
-One toggle flips the whole page. The mode lives in the URL (`?mode=genz`), so if you find
-the fun version you can send someone straight to it.
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## The layout
+## Expanding the ESLint configuration
 
-On a laptop you land on a dotted whiteboard. Stickies, hand-drawn arrows, a few stats,
-and in the middle of it all a phone frame holding the actual portfolio. The whiteboard is
-the thinking; the phone is the thing.
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-On a phone the frame disappears, because putting a picture of a phone inside a phone is a
-joke that only works once. The portfolio just becomes the page.
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-Everything here is static. No accounts, no analytics wall, nothing about your visit gets
-stored anywhere.
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-## Built with
-
-- React 19 and TypeScript
-- Vite
-- CSS Modules and CSS variables
-- Vitest and Playwright
-- Caveat, Fraunces, Geist and Geist Mono, self-hosted
-- Deployed on Vercel
-
-## Running it locally
-
-```bash
-npm install
-npm run dev
-```
-
-## Structure
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 
 ```
-src/
-  content.ts        every job, project and school lives here
-  App.tsx           owns the mode
-  Whiteboard/       the laptop backdrop
-  PhoneFrame/       wraps both views
-  ProfessionalView/
-  GenzView/         quests, XP, achievements
-public/fonts/
+
+You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+
 ```
-
-There's no CMS. Editing `content.ts` is the CMS. Updating a job title is a one-line change,
-which is exactly as much ceremony as updating a job title deserves.
-
-## Say hi
-
-If you found the secret ending, I'd genuinely like to hear about it.
-
-- Email: [chethasreddy@gmail.com](mailto:chethasreddy@gmail.com)
-- GitHub: [@ChethasReddy](https://github.com/ChethasReddy)
-<!-- TODO: add LinkedIn and any other links here -->
-
-## License
-
-The code is MIT licensed, see [LICENSE](LICENSE).
-
-The writing, the visual design and the photographs aren't. They're my professional identity,
-so please don't reuse them. Copyright (c) 2026 Chethas Reddy, all rights reserved.
-
-## Note
-
-If you made it this far, thank you. That's more attention than most portfolios earn.
-
-I put this off for years. Every template I opened felt like someone else's page with my
-name pasted into it, and I'd rather have no portfolio than one that said nothing about me.
-So I didn't build one.
-
-Then I started at Inyo, working on SMS agents. I text ours every day to test it. Before
-that I barely used iMessage, and now I'm in it constantly, watching how the agent answers,
-where it's sharp, where it falls apart. It got addicting in a way I didn't expect. At some
-point it stopped being the thing I worked on and became the thing I talk about.
-
-So that's what this is. The phone frame isn't decoration. It's where I actually spend my day.
