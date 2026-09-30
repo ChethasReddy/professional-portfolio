@@ -1,5 +1,3 @@
-// Single source of copy for both modes. Optional fields render nothing until filled in.
-
 export type Job = {
   company: string
   role?: string

@@ -1,4 +1,3 @@
-// The laptop-only whiteboard around the phone. Hidden below 1100px (see .wb in styles.css).
 import { useState } from 'react'
 import { profile, tools } from './content.ts'
 
