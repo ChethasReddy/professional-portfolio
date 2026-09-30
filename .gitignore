@@ -26,3 +26,7 @@ dist-ssr
 docs
 CLAUDE.md
 .claude
+# Playwright
+playwright-report
+test-results
+.vercel
