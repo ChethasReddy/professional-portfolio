@@ -39,7 +39,6 @@ h1, h2, h3, p { margin: 0; }
 .scroll { scrollbar-width: none; scroll-behavior: smooth; }
 .scroll::-webkit-scrollbar { display: none; }
 
-/* ---------- Laptop: fixed 1440x960 board scaled to fit ---------- */
 .stage { position: relative; height: 100vh; height: 100dvh; overflow: hidden; }
 .dots {
   background-color: var(--board);
@@ -63,7 +62,6 @@ h1, h2, h3, p { margin: 0; }
 .toggle button[aria-pressed='true'] { background: var(--ink); color: var(--paper); }
 [data-mode='genz'] .toggle button[aria-pressed='true'] { background: var(--yellow); color: var(--ink-2); font-weight: 700; }
 
-/* Professional whiteboard */
 .pro-hero, .genz-hero { position: absolute; top: 120px; left: 80px; width: 380px; }
 .pro-hi { font-size: 64px; font-weight: 700; line-height: 0.95; }
 .pro-tagline { font-size: 30px; line-height: 1.1; color: var(--blue); margin: 12px 0 6px; }
@@ -87,7 +85,6 @@ h1, h2, h3, p { margin: 0; }
 .say-hi { position: absolute; bottom: 70px; right: 90px; width: 300px; display: flex; flex-direction: column; font-size: 25px; line-height: 1.3; }
 .say-hi-title { font-size: 30px; font-weight: 700; }
 
-/* Gen Z whiteboard */
 .genz-headline { font-size: 58px; font-weight: 600; line-height: 0.98; letter-spacing: -0.04em; color: var(--ink-2); }
 .genz-pill { margin-top: 16px; display: inline-flex; padding: 6px 12px; background: var(--ink-2); color: var(--yellow); border-radius: 8px; font: 500 12px var(--mono); letter-spacing: 0.08em; }
 .caret { display: inline-block; width: 4px; height: 0.9em; background: var(--ink-2); margin-left: 4px; vertical-align: -0.08em; animation: blink 1s steps(1) infinite; }
@@ -111,18 +108,15 @@ h1, h2, h3, p { margin: 0; }
 .quote { font-size: 30px; font-weight: 600; line-height: 1.05; letter-spacing: -0.03em; color: var(--yellow); }
 .quote-by { margin-top: 12px; font: 500 11px var(--mono); letter-spacing: 0.08em; color: #ffe9e2; }
 
-/* Phone */
 .phone { position: absolute; top: 88px; left: 525px; width: 390px; height: 820px; padding: 12px; background: var(--ink); border-radius: 56px; box-shadow: 0 30px 60px rgba(60, 45, 20, 0.22), 0 4px 0 #0e0c0a; }
 .screen { display: block; width: 366px; height: 796px; border-radius: 45px; overflow-y: auto; background: var(--paper); position: relative; }
 
-/* Buttons */
 .btn-dark, .btn-outline, .btn-yellow { display: flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 18px; border-radius: 12px; font-size: 14px; font-weight: 600; text-decoration: none; }
 .btn-dark, .btn-dark:hover { background: var(--ink); color: var(--paper); }
 .btn-outline, .btn-outline:hover { border: 1.5px solid var(--ink); color: var(--ink); }
 .btn-yellow, .btn-yellow:hover { background: var(--yellow); color: var(--ink-2); font-weight: 700; margin-top: 14px; }
 .btn-block { min-height: 48px; border-radius: 14px; }
 
-/* Professional phone view */
 .p-intro { padding: 40px 24px 20px; }
 .p-avatar { width: 72px; height: 72px; border-radius: 50%; background: var(--frame); border: 1.5px solid #d5c9b2; display: grid; place-items: center; font: 26px var(--serif); color: var(--muted); }
 .pro h1 { margin-top: 18px; font: 700 34px/1.05 var(--serif); letter-spacing: -0.01em; }
@@ -148,7 +142,6 @@ h1, h2, h3, p { margin: 0; }
 .p-contact { padding-bottom: 48px; }
 .p-contact-line { margin: 12px 0 14px; font: 22px/1.25 var(--serif); }
 
-/* Gen Z phone view */
 .g-header { padding: 40px 20px 20px; background: var(--red); position: relative; overflow: hidden; }
 .g-blob { position: absolute; top: 26px; right: 18px; }
 .g-player { font: 500 11px var(--mono); letter-spacing: 0.1em; color: #ffe0d6; }
@@ -177,7 +170,6 @@ h1, h2, h3, p { margin: 0; }
 .g-win-sub { font-size: 13.5px; margin-top: 6px; color: #d8cfc0; }
 .g-locked { padding: 16px; border-radius: 16px; border: 1.5px dashed #b8ac96; text-align: center; font-size: 13px; color: var(--muted-2); }
 
-/* Motion */
 @keyframes blink { 50% { opacity: 0; } }
 @keyframes wobble { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(6deg); } }
 @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
@@ -189,7 +181,6 @@ h1, h2, h3, p { margin: 0; }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
 
-/* ---------- Phone and tablet: the phone's content is the page ---------- */
 @media (max-width: 1099px) {
   body { background: var(--paper); }
   .stage { height: auto; overflow: visible; }
