@@ -1,10 +1,21 @@
 version: 2
+
+# One PR a month covering npm and GitHub Actions together.
+multi-ecosystem-groups:
+  monthly:
+    schedule:
+      interval: monthly
+
 updates:
   - package-ecosystem: npm
     directory: /
-    schedule: { interval: weekly }
-    groups:
-      minor-and-patch: { update-types: [minor, patch] }
+    patterns: ["*"]
+    multi-ecosystem-group: monthly
+    ignore:
+      # typescript-eslint 8 doesn't support TypeScript 7 yet.
+      - dependency-name: typescript
+        update-types: [version-update:semver-major]
   - package-ecosystem: github-actions
     directory: /
-    schedule: { interval: weekly }
+    patterns: ["*"]
+    multi-ecosystem-group: monthly
