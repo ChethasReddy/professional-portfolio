@@ -137,6 +137,7 @@ h1, h2, h3, p { margin: 0; }
 .project { border-radius: 16px; overflow: hidden; padding: 14px; }
 .project h3 { font-size: 15px; }
 .project p { font-size: 13px; line-height: 1.5; color: var(--muted-2); margin-top: 4px; }
+.project-links { display: flex; gap: 14px; }
 .project a { display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 600; }
 .project-video { display: block; width: calc(100% + 28px); margin: -14px -14px 14px; background: #f2ebdd; }
 .p-contact { padding-bottom: 48px; }
@@ -181,14 +182,13 @@ h1, h2, h3, p { margin: 0; }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
 
-@media (max-width: 1099px) {
-  body { background: var(--paper); }
-  .stage { height: auto; overflow: visible; }
-  .board { position: static; width: auto; height: auto; transform: none; border: 0; border-radius: 0; overflow: visible; background: var(--paper); }
+/* Below laptop width the whiteboard drops out; the phone frame stays and shrinks to fit the viewport. */
+@media (max-width: 1023px) {
+  .board { position: static; width: auto; height: 100%; transform: none; border: 0; border-radius: 0; display: flex; flex-direction: column; row-gap: 12px; padding-bottom: 12px; }
   .wb { display: none; }
   .topbar { position: static; padding: 12px 16px; background: var(--paper); border-bottom: 1px solid var(--line); gap: 12px; }
   .brand-text { display: none; }
   .toggle button { padding: 0 12px; }
-  .phone { position: static; width: auto; height: auto; padding: 0; background: none; border-radius: 0; box-shadow: none; }
-  .screen { width: 100%; max-width: 560px; height: auto; margin: 0 auto; border-radius: 0; overflow: visible; }
+  .phone { position: static; flex: 1 1 auto; min-height: 0; max-height: 820px; width: min(390px, calc(100% - 24px)); height: auto; margin: auto; padding: 8px; border-radius: 44px; }
+  .screen { width: 100%; height: 100%; border-radius: 36px; }
 }

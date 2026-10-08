@@ -70,7 +70,10 @@ export function ProfessionalView() {
               )}
               <h3>{p.name}</h3>
               <p>{p.description}</p>
-              {p.repo && <a href={p.repo}>View code</a>}
+              <div className="project-links">
+                {p.live && <a href={p.live}>Live demo</a>}
+                {p.repo && <a href={p.repo}>View code</a>}
+              </div>
             </article>
           ))}
         </div>
@@ -132,10 +135,11 @@ const QUESTS: Quest[] = [
     title: 'Side Quests',
     body: (
       <>
-        <p><b>Ads</b>: hackathon build at AI Tinkerers NYC. his favorite child. <a href={projects[0].repo}>code</a></p>
-        <p><b>SWOT Prompt Explorer</b>: population segmentation, live on Vercel. <a href={projects[1].repo}>code</a></p>
-        <p><b>PitchForge</b>: AI that roasts your investor pitch. 9k lines. <a href={projects[2].repo}>code</a></p>
-        <p><b>VibeTrace Arena</b>: crash-tests the feelings of voice agents. 11 screens.</p>
+        {projects.map((p) => (
+          <p key={p.name}>
+            <b>{p.name}</b>: {p.quip} {p.repo && <a href={p.repo}>code</a>}
+          </p>
+        ))}
       </>
     ),
   },
