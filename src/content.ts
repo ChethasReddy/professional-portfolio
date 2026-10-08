@@ -9,7 +9,9 @@ export type Project = {
   name: string
   description: string
   repo?: string
+  live?: string
   video?: string
+  quip: string
 }
 
 export type School = {
@@ -59,24 +61,46 @@ export const jobs: Job[] = [
 export const projects: Project[] = [
   {
     name: 'Ads',
-    description: 'Built solo at the AI Tinkerers NYC hackathon.',
+    description:
+      'Interactive AI video ad that adapts to viewer feedback and keeps a transparent preference memory. Team build at the AI Tinkerers NYC hackathon; I built the backend API and the Tavus video agent with dynamic personas.',
     repo: 'https://github.com/ChethasReddy/Ads',
+    quip: 'hackathon build at AI Tinkerers NYC. an ad that shuts up when you say so. his favorite child.',
   },
   {
     name: 'SWOT Prompt Explorer',
     description:
       'Live population segmentation app. React 18, Vite, Tailwind, Claude API via edge functions, two-layer session cache.',
     repo: 'https://github.com/ChethasReddy/population-segmentation-UX',
-  },
-  {
-    name: 'PitchForge',
-    description:
-      'AI investor pitch coach as a CLI skill. 53 files, 9,000+ lines, built as a six-layer AI engineering learning arc.',
-    repo: 'https://github.com/ChethasReddy/pitchforge-skill',
+    live: 'https://population-segmentation-ux.vercel.app',
+    quip: 'population segmentation, live on Vercel.',
   },
   {
     name: 'VibeTrace Arena',
     description: '11-screen React prototype of an emotional QA and crash-test tool for voice agents.',
+    repo: 'https://github.com/ChethasReddy/T.E.L.',
+    quip: 'crash-tests the feelings of voice agents. 11 screens.',
+  },
+  {
+    name: 'CartPole RL',
+    description:
+      'Hybrid evolutionary reinforcement learning on CartPole: Evolutionary PPO and ERL-DQN benchmarked against plain DQN. Three-person team, I wrote most of the code.',
+    repo: 'https://github.com/ChethasReddy/Cartpole-RL',
+    quip: 'taught a stick to stand up using evolution. three-person team.',
+  },
+  {
+    name: 'Yu-Gi-Oh! TCG Database',
+    description:
+      'Card and deck explorer with search, filters, market prices and community upvotes. Next.js frontend on a Flask API; three-person team, I led the frontend.',
+    repo: 'https://github.com/ChethasReddy/TCG-Frontend',
+    quip: 'card prices, deck search, upvotes. it is time to duel.',
+  },
+  {
+    name: 'Drug Recommendation',
+    description:
+      'Recommends drugs by disease or active ingredient with cosine similarity, plus a public Tableau dashboard of usage and ingredient trends.',
+    repo: 'https://github.com/ChethasReddy/Drug_recommendation',
+    live: 'https://public.tableau.com/app/profile/chethas.anil.reddy/viz/BIDashboardDrugRecommendationsIngredientInsights/DrugRecommendationDashboard',
+    quip: 'cosine similarity, but make it pharmacy. tableau dashboard included.',
   },
 ]
 

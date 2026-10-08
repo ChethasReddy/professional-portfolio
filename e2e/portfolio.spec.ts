@@ -8,8 +8,10 @@ test('professional mode renders profile, links and no placeholders', async ({ pa
   await expect(page.getByRole('link', { name: 'Email me' })).toHaveAttribute('href', 'mailto:chethasreddy@gmail.com')
   await expect(page.getByRole('link', { name: 'GitHub', exact: true })).toHaveAttribute('href', 'https://github.com/ChethasReddy')
   await expect(page.locator('body')).not.toContainText(/\[[A-Z][A-Z -]+\]/)
+  const swot = page.getByRole('article').filter({ hasText: 'SWOT Prompt Explorer' })
+  await expect(swot.getByRole('link', { name: 'Live demo' })).toHaveAttribute('href', 'https://population-segmentation-ux.vercel.app')
   const vibe = page.getByRole('article').filter({ hasText: 'VibeTrace Arena' })
-  await expect(vibe.getByRole('link')).toHaveCount(0)
+  await expect(vibe.getByRole('link', { name: 'Live demo' })).toHaveCount(0)
 })
 
 test('whiteboard shows on laptop only', async ({ page }, info) => {
@@ -17,6 +19,18 @@ test('whiteboard shows on laptop only', async ({ page }, info) => {
   const sticky = page.getByText('memory recall lift at Inyo')
   if (isDesktop(info.project.name)) await expect(sticky).toBeVisible()
   else await expect(sticky).toBeHidden()
+})
+
+test('phone frame shows and fits inside the viewport', async ({ page }) => {
+  await page.goto('/')
+  const box = (await page.locator('.phone').boundingBox())!
+  const { width, height } = page.viewportSize()!
+  expect(await page.locator('.phone').evaluate((el) => getComputedStyle(el).backgroundColor)).not.toBe('rgba(0, 0, 0, 0)')
+  expect(box.x).toBeGreaterThanOrEqual(0)
+  expect(box.y).toBeGreaterThanOrEqual(0)
+  expect(box.x + box.width).toBeLessThanOrEqual(width)
+  expect(box.y + box.height).toBeLessThanOrEqual(height)
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width)
 })
 
 test('section nav jumps to projects and stays pinned', async ({ page }) => {
